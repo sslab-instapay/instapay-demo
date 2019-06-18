@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+  <link href="./instapay_file/instapay.css" rel="stylesheet">
+  <title>InstaPay Demo</title>
+  <link href="./instapay_file/app.7c92b2f1783e943d38e0bef42d50f55a.css" rel="stylesheet">
+  <link href="./instapay_file/custom.css" rel="stylesheet">
+  <script src="./instapay_file/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position:absolute;width:0;height:0">
+    <defs>
+      <symbol viewBox="0 0 32 32" id="icon_check">
+        <path class="path1" d="M27 4l-15 15-7-7-5 5 12 12 20-20z"></path> </symbol>
+      <symbol viewBox="0 0 32 32" id="icon_bin">
+        <title>Bin</title>
+        <path d="M4 10v20c0 1.1 0.9 2 2 2h18c1.1 0 2-0.9 2-2v-20h-22zM10 28h-2v-14h2v14zM14 28h-2v-14h2v14zM18 28h-2v-14h2v14zM22 28h-2v-14h2v14z"></path>
+         <path d="M26.5 4h-6.5v-2.5c0-0.825-0.675-1.5-1.5-1.5h-7c-0.825 0-1.5 0.675-1.5 1.5v2.5h-6.5c-0.825 0-1.5 0.675-1.5 1.5v2.5h26v-2.5c0-0.825-0.675-1.5-1.5-1.5zM18 4h-6v-1.975h6v1.975z"></path>
+      </symbol>
+      <symbol viewBox="0 0 32 32" id="icon_cart">
+        <title>cart</title>
+         <path d="M12 29c0 1.657-1.343 3-3 3s-3-1.343-3-3c0-1.657 1.343-3 3-3s3 1.343 3 3z"></path>
+         <path d="M32 29c0 1.657-1.343 3-3 3s-3-1.343-3-3c0-1.657 1.343-3 3-3s3 1.343 3 3z"></path>
+         <path d="M32 16v-12h-24c0-1.105-0.895-2-2-2h-6v2h4l1.502 12.877c-0.915 0.733-1.502 1.859-1.502 3.123 0 2.209 1.791 4 4 4h24v-2h-24c-1.105 0-2-0.895-2-2 0-0.007 0-0.014 0-0.020l26-3.98z"></path>
+      </symbol>
+      <symbol viewBox="0 0 32 32" id="icon_copy">
+        <path d="M20 8v-8h-14l-6 6v18h12v8h20v-24h-12zM6 2.828v3.172h-3.172l3.172-3.172zM2 22v-14h6v-6h10v6l-6 6v8h-10zM18 10.828v3.172h-3.172l3.172-3.172zM30 30h-16v-14h6v-6h10v20z"></path>
+      </symbol>
+    </defs>
+  </svg>
+<div id="app" class="app">
+  <div class="app-content">
+    <div class="shop view">
+      <div class="cart-wrapper">
+        <div class="app-logo"><img src="./instapay_file/logo_instapay.png" width="256"></div>
+        <div class="cart">
+          <div class="cart-amount">
+            <div class="cart-amount--value">0.00</div>
+            <div class="cart-amount--unit text-xs text-muted">ETH</div>
+          </div> <!---->
+          <div class="cart-action">
+            <button id="checkout_button" disabled="disabled" class="button checkout">
+              <svg width="10" height="10" aria-label="Checkout cart" class="svg-icon md white">
+                <title>Checkout cart</title>
+                <use xlink:href="#icon_check"></use>
+              </svg>Checkout
+            </button>
+            <button id="empty_cart_button" disabled="disabled" class="button red">
+              <svg width="10" height="10" aria-label="Empty cart" class="svg-icon md white">
+                <title>Empty cart</title>
+                 <use xlink:href="#icon_bin"></use>
+              </svg>
+            </button>
+          </div> <!---->
+         </div>
+       </div>
+    <div class="products">
+      <div class="product-wrapper">
+        <div class="product">
+           <div class="product-illustration">
+             <img src="./instapay_file/coffee_1.jpg" class="product-image">
+             <div class="product-price" value="0.015">0.015 ETH</br>0.015 mBTC</div>
+           </div>
+           <div class="product-content">
+             <div class="product-name text-cursive">Blockaccino</div>
+             <div class="product-desc">Truly the height of our baristas craft.</div>
+           </div>
+           <div class="product-action">
+             <button class="button">
+               <svg width="10" height="10" aria-label="Add to cart" class="svg-icon md white">
+                 <title>Add to cart</title>
+                 <use xlink:href="#icon_cart"></use>
+               </svg>Add to cart!
+             </button>
+            </div>
+        </div>
+      </div>
+      <div class="product-wrapper">
+        <div class="product">
+          <div class="product-illustration">
+            <img src="./instapay_file/coffee_2.jpg" class="product-image">
+            <div class="product-price" value="0.017">0.017 ETH</br>0.017 mBTC</div>
+          </div> <div class="product-content">
+            <div class="product-name text-cursive">Espresso Coin Panna</div>
+            <div class="product-desc">Espresso meets a dollop of whipped cream.</div>
+          </div>
+          <div class="product-action">
+            <button class="button">
+              <svg width="10" height="10" aria-label="Add to cart" class="svg-icon md white">
+                <title>Add to cart</title>
+                <use xlink:href="#icon_cart"></use>
+              </svg>Add to cart!
+             </button>
+           </div>
+         </div>
+       </div>
+       <div class="product-wrapper">
+         <div class="product">
+           <div class="product-illustration">
+             <img src="./instapay_file/coffee_3.jpg" class="product-image">
+             <div class="product-price" value="0.019">0.019 ETH</br>0.019 mBTC</div>
+           </div>
+          <div class="product-content">
+            <div class="product-name text-cursive">Scala Chip Frappuccino</div>
+            <div class="product-desc">A lighter chip off the java block.</div>
+          </div>
+          <div class="product-action">
+            <button class="button">
+              <svg width="10" height="10" aria-label="Add to cart" class="svg-icon md white">
+                <title>Add to cart</title>
+                <use xlink:href="#icon_cart"></use>
+              </svg>Add to cart!
+            </button>
+           </div>
+         </div>
+       </div>
+      <div class="product-wrapper">
+        <div class="product">
+            <div class="product-illustration">
+              <img src="./instapay_file/coffee_4.jpg" class="product-image">
+              <div class="product-price" value="0.012">0.012 ETH</br>0.012mBTC</div>
+            </div>
+            <div class="product-content">
+              <div class="product-name text-cursive">Cinamon Dolce Latte</div>
+              <div class="product-desc">Frozen yogurt with chocolate chips.</div>
+            </div>
+            <div class="product-action">
+              <button class="button">
+                <svg width="10" height="10" aria-label="Add to cart" class="svg-icon md white">
+                  <title>Add to cart</title>
+                  <use xlink:href="#icon_cart"></use>
+                </svg>Add to cart!
+              </button>
+              </div>
+           </div>
+         </div>
+     </div>
+   </div>
+ </div>
+</div>
+</body>
+<script type="text/javascript" src="./instapay_file/custom_script.js"></script>
+</html>
