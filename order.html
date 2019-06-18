@@ -5,11 +5,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
   <link href="./instapay_file/instapay.css" rel="stylesheet">
-  <title>InstaPay | Spend Ethereum with Raiden Network</title>
+  <title>InstaPay | Spend Ethereum with InstaPay</title>
   <link href="./instapay_file/app.7c92b2f1783e943d38e0bef42d50f55a.css" rel="stylesheet">
   <link href="./instapay_file/custom.css" rel="stylesheet">
   <script src="./instapay_file/jquery-3.4.1.min.js"></script>
   <script src="./instapay_file/qrcode.js"></script>
+  <script src="./instapay_invoice/payreq.js"></script>
 </head>
   <body>
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position:absolute;width:0;height:0">
@@ -37,26 +38,61 @@
               <div class="order-title text-center">Order
                 <strong>#80d7e95af9df0c825c7254d84594c668</strong>
               </div>
-              <div class="order-amount">0.000017<span class="unit">ETH</span></div>
+              <div class="order-amount">
+                <script type="text/javascript">
+                function getUrlParams() {
+                  var params = {};
+                  location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
+                  return params;
+                }
+                var productValue = getUrlParams['productValue']
+                document.write(productValue)
+                </script>
+                <span class="unit">ETH</span>
+              </div>
               <ul class="order-products"></ul>
             </div>
             <div class="order-payment">
-              <div class="order-title order-pr--title">Scan this invoice with your <strong>RN-enabled</strong> wallet</div>
+              <div class="order-title order-pr--title">Scan this invoice with your wallet</div>
               <div class="order-container order-pr">
                 <div class="order-qrcode">
                   <div id="qrcode">
 
                   </div>
                 </div>
-                <div class="order-pr--value"><span>lntb17u1pwvh88cpp5alpqswrdkpa8h62xamclpr02856za26clgq2t4er66eszdstg5zqdpzxysy2umswfjhxum0yppk76twypgxzmnwvycqp5agf65xvggprduaaqwtaj8qrfkuaxgy2ynnfpatd7dh6zryrxr3xj24e3mx69z2l0w80fl6e48m8qzk77y2dsyup5sphy2hrg4x035gqqqrky2e</span></div>
-                <!-- <a href="lightning:lntb17u1pwvh88cpp5alpqswrdkpa8h62xamclpr02856za26clgq2t4er66eszdstg5zqdpzxysy2umswfjhxum0yppk76twypgxzmnwvycqp5agf65xvggprduaaqwtaj8qrfkuaxgy2ynnfpatd7dh6zryrxr3xj24e3mx69z2l0w80fl6e48m8qzk77y2dsyup5sphy2hrg4x035gqqqrky2e" class="button ocher">Open with your wallet</a>
-                <button id="copy_button" type="button" title="Copy to clipboard" class="button copy ocher">
-                  <svg width="10" height="10" aria-label="Copy" class="svg-icon lg undefined">
-                  <title>Copy</title>
-                  <use xlink:href="#icon_copy"></use>
-                  </svg>
-                   <span>Copy</span>
-                 </button> -->
+                <div class="order-pr--value">
+                  <span>
+                    <script type="text/javascript">
+                      function getUrlParams() {
+                        var params = {};
+                        location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
+                        return params;
+                      }
+                      var productValue = getUrlParams['productValue']
+                      productValue = productValue * 1000000
+                      var unixTime = Math.round(+new Date()/1000)
+                      var encoded = encode({
+                        "satoshis": productValue,
+                        "timestamp": unixTime,
+                        "tags": [
+                          {
+                            "tagName": "payee_node_key",
+                            "data": "0x78902c58006916201F65f52f7834e467877f0500"
+                          },
+                          {
+                            "tagName": "expire_time",
+                            "data": 3600
+                          },
+                        ]
+                      })
+                      var privateKeyHex = 'e126f68f7eafcc8b74f54d269fe206be715000f94dac067d1c04a8ca3b2db734'
+                      console.log(encoded)
+                      var signed = lightningPayReq.sign(encoded, privateKeyHex)
+                      document.write(signed['paymentRequest'])
+                    </script>
+                  </span>
+                </div>
+
                </div>
              </div>
            </div> <!----> <!---->
