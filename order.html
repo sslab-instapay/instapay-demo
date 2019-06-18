@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<!-- saved from url=(0066)https://starblocks.acinq.co/order/80d7e95af9df0c825c7254d84594c668 -->
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -10,7 +8,7 @@
   <link href="./instapay_file/custom.css" rel="stylesheet">
   <script src="./instapay_file/jquery-3.4.1.min.js"></script>
   <script src="./instapay_file/qrcode.js"></script>
-  <script src="./instapay_invoice/payreq.js"></script>
+  <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
   <body>
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position:absolute;width:0;height:0">
@@ -60,35 +58,23 @@
 
                   </div>
                 </div>
-                <div class="order-pr--value">
+                <div id="order-pr--value" class="order-pr--value">
                   <span>
                     <script type="text/javascript">
-                      function getUrlParams() {
-                        var params = {};
-                        location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
-                        return params;
-                      }
-                      var productValue = getUrlParams['productValue']
-                      productValue = productValue * 1000000
-                      var unixTime = Math.round(+new Date()/1000)
-                      var encoded = encode({
-                        "satoshis": productValue,
-                        "timestamp": unixTime,
-                        "tags": [
-                          {
-                            "tagName": "payee_node_key",
-                            "data": "0x78902c58006916201F65f52f7834e467877f0500"
-                          },
-                          {
-                            "tagName": "expire_time",
-                            "data": 3600
-                          },
-                        ]
-                      })
-                      var privateKeyHex = 'e126f68f7eafcc8b74f54d269fe206be715000f94dac067d1c04a8ca3b2db734'
-                      console.log(encoded)
-                      var signed = lightningPayReq.sign(encoded, privateKeyHex)
-                      document.write(signed['paymentRequest'])
+                    console.log(location.href)
+                    var url = "http://localhost:3000/invoices?price=" + "0.017"
+                    $.ajax({
+                        type : "GET",
+                        url : url,
+                        dataType : "json",
+                        error : function(){
+                            console.log("error")
+                        },
+                        success : function(data){
+                            console.log(data)
+                            document.getElementById('order-pr--value').innerHTML = data["invoice"];
+                        }
+                    });
                     </script>
                   </span>
                 </div>
