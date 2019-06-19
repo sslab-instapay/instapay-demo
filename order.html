@@ -69,7 +69,7 @@
                     var productValue = getUrlParams['productValue']
                     var urlStr = location.href
 
-                    var url = "http://localhost:3000/invoices?price=" + urlStr.split(/productValue=/)[1]
+                    var url = "http://141.223.83.21:3000/invoices?price=" + urlStr.split(/productValue=/)[1]
                     $.ajax({
                         type : "GET",
                         url : url,
