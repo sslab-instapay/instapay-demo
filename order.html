@@ -61,8 +61,15 @@
                 <div id="order-pr--value" class="order-pr--value">
                   <span>
                     <script type="text/javascript">
-                    console.log(location.href)
-                    var url = "http://localhost:3000/invoices?price=" + "0.017"
+                    function getUrlParams() {
+                      var params = {};
+                      location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
+                      return params;
+                    }
+                    var productValue = getUrlParams['productValue']
+                    var urlStr = location.href
+
+                    var url = "http://localhost:3000/invoices?price=" + urlStr.split(/productValue=/)[1]
                     $.ajax({
                         type : "GET",
                         url : url,
