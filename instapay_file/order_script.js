@@ -18,7 +18,7 @@ $("#home-button").on("click", function(event){
 });
 
 var qrcode = new QRCode(document.getElementById("qrcode"), {
-	text: "baseurl" + "walletaddress",
+	text: "INSTA|0x78902c58006916201F65f52f7834e467877f0500|0.017",
 	width: 300,
 	height: 300,
 	colorDark : "#000000",
