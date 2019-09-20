@@ -42,7 +42,7 @@
                   location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
                   return params;
                 }
-                var productValue = getUrlParams['productValue']
+                var productValue = getUrlParams['productValue'];
                 document.write(productValue)
                 </script>
                 <span class="unit">ETH</span>
@@ -77,14 +77,15 @@
                             console.log("error")
                         },
                         success : function(data){
-                            console.log(data)
+                            console.log(data);
                             document.getElementById('order-pr--value').innerHTML = data["invoice"];
                         }
                     });
                     </script>
                   </span>
                 </div>
-
+                <span id="invoice">INSTA|0x78902c58006916201F65f52f7834e467877f0500|0.017
+                </span>
                </div>
              </div>
            </div> <!----> <!---->
