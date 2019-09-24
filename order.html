@@ -58,34 +58,20 @@
                   </div>
                 </div>
                 <div id="order-pr--value" class="order-pr--value">
-                  <span>
+                  <span id="invoice">
                     <script type="text/javascript">
-                    function getUrlParams() {
-                      var params = {};
-                      location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
-                      return params;
-                    }
-                    var productValue = getUrlParams['productValue']
-                    var urlStr = location.href
-
-                    var url = "http://141.223.83.21:3000/invoices?price=" + urlStr.split(/productValue=/)[1]
-                    $.ajax({
-                        type : "GET",
-                        url : url,
-                        dataType : "json",
-                        error : function(){
-                            console.log("error")
-                        },
-                        success : function(data){
-                            console.log(data);
-                            document.getElementById('order-pr--value').innerHTML = data["invoice"];
-                        }
-                    });
+                     function getUrlParams() {
+                       var params = {};
+                       console.log(location.search);
+                       location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
+                       return params;
+                     }
+                     console.log(getUrlParams()['productValue']);
+                     var productValue = getUrlParams()['productValue'];
+                     document.write("INSTA|0xD03A2CC08755eC7D75887f0997195654b928893e|" + productValue);
                     </script>
                   </span>
                 </div>
-                <span id="invoice">INSTA|0xD03A2CC08755eC7D75887f0997195654b928893e|5
-                </span>
                </div>
              </div>
            </div> <!----> <!---->
