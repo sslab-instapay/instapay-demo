@@ -1,0 +1,1 @@
+nohup static-html-server -p 7777 -r ./ -f instapay_demo.html &
